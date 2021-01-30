@@ -119,7 +119,7 @@ get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
 
 
 
-#       CC calculation ------------------------------------------------------------------------------>####
+#       CC calculation
 
 
         # Population correlation coefficient
@@ -136,7 +136,7 @@ get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
 
 
   
-#       Monte carlo sample distribution of CC estimates --------------------------------------------->####
+#       Monte carlo sample distribution of CC estimates 
         #NOTE: This is a random sample since sampling from samplsize of 25 and NOT the population 
         
         
@@ -178,7 +178,7 @@ get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
 
 
 
-#       Monte carlo sample distribution of CC estimates noramlity analysis (qq-plot & histogram) ---->####
+#       Monte carlo sample distribution of CC estimates noramlity analysis (qq-plot & histogram) 
         #NOTE: Checking if samplesize of 25 is large enough????
         
         # Histogram of monte carlo sample distribution
@@ -213,7 +213,7 @@ get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
         
         
         
-        #*******    Is samplesize of 25 large enough???       NO.   *********
+        #*******    Is samplesize of 25 large enough??? ...NO   *********
         
         
         
@@ -227,7 +227,11 @@ get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
 
 # STRATIFIED CONDITIONAL MEAN(S) REGRESSION ESTIMATE (Condition: Father = 72 in tall)                 ####
 #NOTE: r is often referred to as the correlation coefficient 
-#       Stratified single conditional mean estimate (w/o regression) -------------------------------->####
+
+
+
+
+#       Stratified single conditional mean estimate (w/o regression)
         
         
         # Stratified mean height of son condition to father being 72.0 (1.1 SDs over avg)
