@@ -14,81 +14,81 @@
     library(broom)
     ds_theme_set()
 
-        
 
-#**********************************************Regression*********************************************####
-# PLOT EXAMPLES                                                                                 18.1.4####
-#NOTE: Univariate variable means one?
 
 get_slope <- function(x, y) cor(x, y) * sd(y) / sd(x)
 get_intercept <- function(x, y) mean(y) - cor(x,y) * sd(y)/sd(x) * mean(x)
 
+
+
+# PLOT EXAMPLES
+
 # HR vs R
-#________________________________________________________________________________________
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(HR_per_game = HR / G, R_per_game = R / G) %>%
-  ggplot(aes(HR_per_game, R_per_game)) + 
-  geom_point(alpha = 0.5) +
-  geom_abline(aes(slope = get_slope(HR_per_game, R_per_game), intercept = get_intercept(HR_per_game, R_per_game)))
+
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(HR_per_game = HR / G, R_per_game = R / G) %>%
+      ggplot(aes(HR_per_game, R_per_game)) + 
+      geom_point(alpha = 0.5) +
+      geom_abline(aes(slope = get_slope(HR_per_game, R_per_game), intercept = get_intercept(HR_per_game, R_per_game)))
 
 
 # SB vs R
-#________________________________________________________________________________________
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(SB_per_game = SB / G, R_per_game = R / G) %>%
-  ggplot(aes(SB_per_game, R_per_game)) + 
-  geom_point(alpha = 0.5)+
-  geom_abline(aes(slope = get_slope(SB_per_game, R_per_game), intercept = get_intercept(SB_per_game, R_per_game)))
+
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(SB_per_game = SB / G, R_per_game = R / G) %>%
+      ggplot(aes(SB_per_game, R_per_game)) + 
+      geom_point(alpha = 0.5)+
+      geom_abline(aes(slope = get_slope(SB_per_game, R_per_game), intercept = get_intercept(SB_per_game, R_per_game)))
 
 
 # AB vs R
-#________________________________________________________________________________________
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(AB_per_game = AB / G ,R_per_game = R / G) %>%
-  ggplot(aes(AB_per_game, R_per_game)) +
-  geom_point(alpha = 0.5) +
-  geom_abline(aes(slope = get_slope(AB_per_game, R_per_game), intercept = get_intercept(AB_per_game, R_per_game)))
+
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(AB_per_game = AB / G ,R_per_game = R / G) %>%
+      ggplot(aes(AB_per_game, R_per_game)) +
+      geom_point(alpha = 0.5) +
+      geom_abline(aes(slope = get_slope(AB_per_game, R_per_game), intercept = get_intercept(AB_per_game, R_per_game)))
   
 
 
 # X3B vs X2B
-#________________________________________________________________________________________
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(X3B_per_game = X3B / G, X2B_per_game = X2B/ G) %>%
-  ggplot(aes(X3B, X2B)) +
-  geom_point(alpha = 0.5) +
-  geom_abline(aes(slope = get_slope(X3B_per_game, X2B_per_game), intercept = get_intercept(X3B_per_game, X2B_per_game)))
+
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(X3B_per_game = X3B / G, X2B_per_game = X2B/ G) %>%
+      ggplot(aes(X3B, X2B)) +
+      geom_point(alpha = 0.5) +
+      geom_abline(aes(slope = get_slope(X3B_per_game, X2B_per_game), intercept = get_intercept(X3B_per_game, X2B_per_game)))
 
 
 # BB vs R
-#________________________________________________________________________________________
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
-  ggplot(aes(BB_per_game, R_per_game)) + 
-  geom_point(alpha = 0.5) +
-  geom_abline(aes(slope = get_slope(BB_per_game, R_per_game), intercept = get_intercept(BB_per_game, R_per_game)))
+    
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
+      ggplot(aes(BB_per_game, R_per_game)) + 
+      geom_point(alpha = 0.5) +
+      geom_abline(aes(slope = get_slope(BB_per_game, R_per_game), intercept = get_intercept(BB_per_game, R_per_game)))
 
 
 
 
 
 
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
-  summarise(r = cor(BB_per_game, R_per_game), sd_BB = sd(BB_per_game), sd_R = sd(R_per_game))
-
-0.5502086 * 0.5885791 / 0.4404034                           # slope   =   0.735
-
-
-Teams %>% filter(yearID %in% 1961:2001) %>%
-  mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
-  summarise(slope = get_slope(BB_per_game, R_per_game))     # slope   =   0.735
-
-
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
+      summarise(r = cor(BB_per_game, R_per_game), sd_BB = sd(BB_per_game), sd_R = sd(R_per_game))
+    
+    0.5502086 * 0.5885791 / 0.4404034                           # slope   =   0.735
+    
+    
+    Teams %>% filter(yearID %in% 1961:2001) %>%
+      mutate(BB_per_game = BB / G, R_per_game = R / G) %>%
+      summarise(slope = get_slope(BB_per_game, R_per_game))     # slope   =   0.735
 
 
-# CORRELATION COEFFICIENT                                                                             ####
-#       CC data wrangling --------------------------------------------------------------------------->####
+
+
+# CORRELATION COEFFICIENT
+#       CC data wrangling
 
         library(HistData)
         data("GaltonFamilies")
@@ -1295,7 +1295,7 @@ Teams %>% filter(yearID %in% 1961:2001) %>%
 
 
 
-        #       LSE estimates beta0, beta1, beta2 ----------------------------------------------------------->####
+#       LSE estimates beta0, beta1, beta2 ----------------------------------------------------------->####
         
         # Use lm() function to calculate LSE for Rs, HRs, and BBs 
         #________________________________________________________________________________________
@@ -1391,7 +1391,7 @@ Teams %>% filter(yearID %in% 1961:2001) %>%
         
         
         
-        # lm() prediction error --------------------------------------------------------------------->####
+#       lm() prediction error ----------------------------------------------------------------------->####
         #________________________________________________________________________________________
         Teams %>% 
           filter(yearID %in% 2002) %>%                       # <--- new data (2002 stats)
@@ -1662,5 +1662,4 @@ bat_3
               
               
               
-    
     
